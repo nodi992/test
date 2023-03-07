@@ -13,6 +13,13 @@ public class Main {
       System.out.println(s1);
       perpendicularSegment(segment,p1);
       System.out.println(segment.getP1().x);
+        Polygon polygon = new Polygon(4);
+        polygon.setPoint(0, new Point(50, 50));
+        polygon.setPoint(1, new Point(150, 50));
+        polygon.setPoint(2, new Point(150, 150));
+        polygon.setPoint(3, new Point(50, 150));
+
+        System.out.println(polygon.toSvg());
 
     }
     public static Segment perpendicularSegment(Segment segment, Point point) {

@@ -5,13 +5,13 @@ public class Polygon {
         this.points = new Point[ile];
     }
 
-    public void setVertex(int index, Point point) {
+    public void setPoint(int index, Point point) {
         if (index >= 0 && index < points.length) {
             points[index] = new Point(point.x, point.y);
         }
     }
 
-    public void setVertices(Point[] points) {
+    public void setPoints(Point[] points) {
         this.points = new Point[points.length];
         for (int i = 0; i < points.length; i++) {
             this.points[i] = new Point(points[i].x, points[i].y);
@@ -19,16 +19,14 @@ public class Polygon {
     }
 
     public String toSvg() {
-        StringBuilder svgBuilder = new StringBuilder();
-        svgBuilder.append("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>\n");
-        svgBuilder.append("<polygon points='");
-        for (int i = 0; i < points.length; i++) {
-            Point point = points[i];
-            svgBuilder.append(point.x).append(",").append(point.y).append(" ");
+        StringBuilder svg = new StringBuilder("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n<polygon points=\"");
+
+        for (Point p : points) {
+            svg.append(p.x).append(",").append(p.y).append(" ");
         }
-        svgBuilder.append("' />\n");
-        svgBuilder.append("</svg>");
-        return svgBuilder.toString();
+
+        svg.append("\" stroke=\"black\" stroke-width=\"3\" fill=\"none\" />\n</svg>");
+        return svg.toString();
 
     }
 }
